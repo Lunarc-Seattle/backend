@@ -74,7 +74,8 @@ public class Employee {
 
 ---
 
-### 1. Entity (实体类)
+### 1. Entity (实体类) --pojo/.../...
+![img_5.png](img_5.png)
 * **存放位置：** `com.sky.entity`
 * **职责：** **与数据库表“一一对应”**。
 * **特点：**
