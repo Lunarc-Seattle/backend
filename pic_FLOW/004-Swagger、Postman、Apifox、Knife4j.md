@@ -1,4 +1,4 @@
-````md
+
 # Swagger、Postman、Apifox、Knife4j 区别总结
 
 ## 1. 一句话理解
@@ -42,8 +42,10 @@ GET /patients/{id}
 ```text
 http://localhost:8080/swagger-ui/index.html
 ```
-
 ---
+### swagger的注释：
+![img_13.png](img_13.png)
+
 
 ## 3. Postman 是什么？
 
