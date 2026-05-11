@@ -1,11 +1,15 @@
 package com.sky.config;
 
 import com.sky.interceptor.JwtTokenAdminInterceptor;
+import com.sky.json.JacksonObjectMapper;
+import io.netty.util.Mapping;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.cbor.MappingJackson2CborHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -73,12 +77,20 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     }
 
     /**
-     * 
+     * 扩展spring mvc框架的消息转化器
      * @param converters the list of configured converters to extend
      */
     protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        super.extendMessageConverters(converters);
+
         //不知道的可以去看看雷神的boot3,里面有源码分析
-        //@DateTimeFormat用于接受参数时（DTO）将字符串转换为日期时间类型，@JsonFormat用于返回数据时（entity）将日期时间类型格式化为字符串
+        //@DateTimeFormat用于接受参数时（DTO）将字符串转换为日期时间类型
+        //@JsonFormat用于返回数据时（entity）将日期时间类型格式化为字符串
+        log.info("扩展消息转化器。。。");
+        //创建一个消息转化器对象
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        //需要为消息转化器设置一个对象转换器，对象转换器可以将java obj 序列化为 json数据
+        converter.setObjectMapper(new JacksonObjectMapper());
+        //将自己的消息转化器加入容器中,并设置为第一个（因为还有很多其他的排在前面，不设置会把自己的额排在后面
+        converters.add(0,converter);
     }
 }
