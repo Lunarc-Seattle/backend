@@ -1,8 +1,8 @@
 # AOP 切面执行流程：AutoFill 自动填充 — *AOP Aspect Execution Flow: AutoFill Common-Field Auto-Population*
 
-> 配合 `010 - day3 重复字段.MD` 一起看。010 讲"是什么、为什么"，本篇讲"AOP **具体在哪里截获**、**反射如何赋值**"。
+> 配合 `010 - day3 重复字段 - Common Audit Fields.md` 一起看。010 讲"是什么、为什么"，本篇讲"AOP **具体在哪里截获**、**反射如何赋值**"。
 >
-> *Read alongside `010 - day3 重复字段.MD`. File 010 covers the "what" and "why"; this file focuses on **where AOP actually intercepts the call** and **how reflection assigns the values**.*
+> *Read alongside `010 - day3 重复字段 - Common Audit Fields.md`. File 010 covers the "what" and "why"; this file focuses on **where AOP actually intercepts the call** and **how reflection assigns the values**.*
 
 ---
 
